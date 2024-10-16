@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
+import { useCallback, useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Home from './route/Home';
+import Detail from './route/MovieDetail';
+import MovieApp from './route/Movie';
 
 function App() {
+  // LifeCycle
+  useEffect(()=>{
+    // onMount
+    console.log("App rendered.");
+    // onUnMount
+    return () => {
+      console.log("App destroyed.");
+    }
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ToastContainer />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/movie" element={<MovieApp/>}/>
+          <Route path="/movie/:code" element={<Detail/>} />
+        </Routes>
+      </Router>
+      
     </div>
   );
 }
