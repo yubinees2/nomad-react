@@ -77,7 +77,7 @@ const MovieDetail = () => {
     const fetchMovieData = useCallback(async () => {
         if (!loaded) {
             try {
-                const response = await fetch(`http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=82ca741a2844c5c180a208137bb92bd7&movieCd=${movieCd}`);
+                const response = await fetch(`https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=82ca741a2844c5c180a208137bb92bd7&movieCd=${movieCd}`);
                 if (response.status == 200) {
                     const json:IMovieDetail = await response.json();
                     setLoaded(true);
